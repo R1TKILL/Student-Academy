@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--Aqui também inserimos o namespace da biblioteca thymeleaf para acessar suas tags especiais, usando th-->
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!--Trazendo o jquery para o bootstrap-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+			
+	<!--Link para usar o bootstrap--> 
+ 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+	
+	<!--Trazendo o javascript do bootstrap-->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+	
+	<title>Academy</title>
+	<meta name="author" content="R1TKILL">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://kit.fontawesome.com/006642858d.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,600&family=Ubuntu&family=Work+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+
+	<div class="alert alert-warning alert-dismissible fade show welcome"
+		role="alert">
+		<strong>Seja Bem Vindo: <span th:text="${session.usuarioLogado.user}"></span></strong>
+		<button type="button" class="btn-close" data-bs-dismiss="alert"
+			aria-label="Close"></button>
+	</div>
+
+	<!--Reaproveitando o código com thymeleaf-->
+	<div th:replace="Fragments/fragments :: baseup"></div>	
+	
+	<section class="root-section" style="background-image: url('img/backgroundPlanets2.jpg');">
+	
+		<div class="shadow-image"></div>
+	
+		<div class="center text-container">
+			<h1 class="text-center">Sistema de Gerenciamento de Alunos</h1>
+				
+			<div class="buttons">
+				<div class="wm">
+					<h5 class="btn-section">Cadastrar Aluno</h5>
+				</div>
+				
+				<div class="wm">
+					<h5 class="btn-section justify-content-center">Encontrar Aluno</h5>
+				</div>
+			</div>
+			
+			<div class="clear"></div>
+		</div>
+	</section>
+	
+	<div th:replace="Fragments/fragments :: basedown"></div>	
+
+	<!--Trazendo o javascript do bootstrap-->
+	<script src="/webjars/jquery/3.6.3/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html> 

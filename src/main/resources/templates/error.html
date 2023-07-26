@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	<title>Página de erro</title>
+	<link rel="stylesheet" type="text/css" href="css/erro.css">
+	
+	 <style type="text/css">
+	     @font-face {
+	    font-family: 'BDCartoonShoutRegular';
+	    src: url('BD_Cartoon_Shout-webfont.ttf') format('truetype');
+	    font-weight: normal;
+	    font-style: normal;
+	     }
+	     #pacman {
+	       height:450px;
+	       width:342px;
+	       margin:20px auto;
+	     }
+	     #shim { 
+	       font-family: BDCartoonShoutRegular; 
+	       position:absolute;
+	       visibility:hidden
+	     }
+	     h1 { font-family: BDCartoonShoutRegular; text-align:center; }
+	     body { width:342px; margin:0px auto; font-family:sans-serif; }
+	     a { text-decoration:none; }
+    </style>
+	
+</head>
+<body>
+
+	<!--A página de error deve ficar fora de um folder, para ser redirecionada por todos erros como
+	padrão de caminho.-->
+
+	<div id="shim"></div>
+	
+
+	<!-- conteudo do erro!!!! -->
+	<br><br><br>
+	<div class="conteudo-erro">
+		<h1>O sistema apresentou um problema inesperado, favor entrar em contato com Junio: (91) 98147-4282 ou antoniojunio402@gmail.com</h1><br><br>
+		<h1>Obrigado, equipe de Suporte</h1>
+	</div>
+	<br><br><br><br>
+	
+	<div class="lb-game">
+		<h1>Não deixe o problema acabar com o seu dia.</h1>
+	</div>
+	
+	<div class="pacman" id="pacman"></div>
+	<script src="js/pacman.js"></script>
+	<script src="js/modernizr-1.5.min.js"></script>
+	
+	<script>
+		var el = document.getElementById("pacman");
+		
+		if (Modernizr.canvas && Modernizr.localstorage && 
+		    Modernizr.audio && (Modernizr.audio.ogg || Modernizr.audio.mp3)) {
+		  window.setTimeout(function () { PACMAN.init(el, "./"); }, 0);
+		} else { 
+		  el.innerHTML = "Sorry, needs a decent browser<br /><small>" + 
+		    "(firefox 3.6+, Chrome 4+, Opera 10+ and Safari 4+)</small>";
+		}
+	</script>
+
+</body>
+</html>

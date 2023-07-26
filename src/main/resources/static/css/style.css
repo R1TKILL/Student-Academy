@@ -1,0 +1,164 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+nav{
+	height: 90px;
+	color: white;
+	font-weight: bold;
+	background-color: #4527A0;
+	text-transform: uppercase;
+}
+a{
+	margin-right: 10px;
+	cursor: pointer;
+}
+a.btn-nav:hover{
+	color: #f642c4;
+}
+.dan{
+	width: 80px;
+}
+
+.root-section{
+	min-height: 560px;
+	background-size: cover !important;
+	background-position: top;
+	background-repeat: no-repeat;
+	width: 100%;
+	padding: 30px;
+	position: relative;
+}
+.wm{
+	position: relative;
+	left: 7%;
+	width: 50%;
+	float: left;
+}
+
+.clear{
+	clear: both;
+}
+.center{
+	text-align: center;
+}
+
+.text-container{
+	max-width: 1280px;
+	padding: 2% 2%;
+	margin: 0 auto;
+	margin-top: 120px;
+}
+.shadow-image{
+	width: 100%;
+	height: 100%;
+	top: 0%;
+	left: 0;
+	position: absolute;
+	background: rgba(0,0,0,0.7);
+	z-index: 100;
+}
+
+.root-section > .text-container{
+	position: relative;
+	z-index: 105;
+}
+.text-center{
+	color: white;
+	font-size: 3em;
+	font-family: 'Ubuntu';
+	font-weight: bold;
+}
+
+.btn-section{
+	width: 280px;
+	color: #f642c4;
+	border-radius: 10px;
+	border: 3px solid #a55eea;
+	padding: 15px;
+	font-weight: bold;
+}
+.buttons{
+	padding: 2% 17%;
+}
+.btn-section:hover{
+	/*background-image: linear-gradient(150deg, rgb(140, 0, 255), rgb(255, 0, 212), rgb(111, 0, 255));*/
+	color: #6417da;
+	background-color: rgba(0,0,0,0.7);
+	border-radius: 10px;
+	border: 3px solid #f642c4;
+	transform: scale(1.1);
+	transition: all 0.3s ease-in;
+}
+
+.down-footer{
+	color: #fff;
+	background-color: #4527A0;
+	text-align: center;
+	font-size: 1.25em;
+	padding: 15px;
+	font-weight: bold;
+}
+
+/*Responsividade com Media query*/
+@media screen and (max-width: 1020px){
+	.wm{width: 100%;}
+	nav{height: 100%;}
+}
+
+
+.btn-search{
+	border-radius: 30px;
+	border-color: #4527A0;
+	color: white !important;
+}
+.btn-search:hover{
+	background-color: #6417da;
+	transform: scale(1.3);
+	transition: all 0.3s ease-in;
+}
+
+.bar-search{
+	border-radius: 15px !important;
+}
+
+
+.img-container{
+	overflow: hidden;
+}
+.card-container img{
+	width: 100%;
+	display: block;
+}
+.card-container:hover{
+	box-shadow: 0 0 15px #6417da;
+	transition: all 0.3s ease-in;
+}
+.card-container:hover img{
+	transform: scale(1.5);
+	transition: all 0.3s linear;
+}
+
+
+.welcome{
+	margin: 0;
+	text-align: center;
+}
+
+
+.btr{
+	position: relative;
+	left: 0%;
+	width: 50%;
+	float: left;
+}
+.btn-warning{
+	margin-left: 435px;
+	color: white !important;
+	font-family: 'Ubuntu';
+	font-weight: bold;
+}
+

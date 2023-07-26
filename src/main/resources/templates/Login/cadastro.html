@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--Aqui também inserimos o namespace da biblioteca thymeleaf para acessar suas tags especiais, usando th-->
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+	<title>Student Academy - cadastro</title>
+	<meta name="author" content="R1TKILL">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<script src="https://kit.fontawesome.com/006642858d.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,600&family=Ubuntu&family=Work+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+
+	<div class="Login-Form">
+		<div class="container">
+			<div class="main-div">
+			
+				<div class="texto-header">
+					<h2>Cadastro de Usuário</h2>
+					<p>Crie seu Usuário no Sistema</p>
+				</div>
+				
+				<form method="post" th:object="${usuario}" action="salvarUsuario">
+				
+					<div class="alert alert-danger" role="alert" th:if="${msg}">
+						<strong th:text="${msg}"></strong>
+					</div>
+				
+					<div class="form-group">
+						<i class="fa fa-envelope"></i>
+						<input type="email" class="form-control" th:field="*{email}" placeholder="Digite seu Email">
+					</div>
+					
+					<div class="form-group">
+					
+						<!--Aqui e na senha é pra trazer as mensagens de erro em Usuario.java,
+						mesmo com o objeto trago para cá, ele não redireciona para cá.-->
+						
+						<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('user')}">
+							<label class="validation-message" th:errors="*{user}"></label>
+						</div>
+						
+						<i class="fa fa-user"></i>
+						<input type="text" class="form-control" th:field="*{user}" placeholder="Username">
+					</div>
+					
+					<div class="form-group">
+					
+						<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('senha')}">
+							<label class="validation-message" th:errors="*{senha}"></label>
+						</div>
+						
+						<i class="fa fa-lock"></i>
+						<input type="password" class="form-control" th:field="*{senha}" placeholder="Password">
+					</div>
+					
+					<button type="submit" class="btn btn-primary btn-cadastro">Cadastrar</button>
+												
+					<a class="btn btn-info" th:href="@{/}">Voltar</a>
+					
+				</form>
+				
+			</div>
+		</div>
+	</div>
+
+	<script src="/webjars/jquery/3.6.3/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

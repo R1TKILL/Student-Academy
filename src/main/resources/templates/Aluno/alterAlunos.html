@@ -1,0 +1,99 @@
+ <!DOCTYPE html>
+<!--Aqui também inserimos o namespace da biblioteca thymeleaf para acessar suas tags especiais, usando th-->
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--Link para usar o bootstrap-->
+ 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+	<title>Alterar dados do Alunos</title>
+	<meta name="author" content="R1TKILL">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="https://kit.fontawesome.com/006642858d.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,600&family=Ubuntu&family=Work+Sans&display=swap" rel="stylesheet">
+</head>
+<body style="background-image: url('img/backgroundPlanets.jpg');">	
+
+	<div th:replace="Fragments/fragments :: baseup"></div>
+	
+	<div class="container" style="margin-top: 30px;">		
+		<h2 style="text-align: center; font-weight: bold; color: white; font-family: Ubuntu">
+			Verifique com atenção ao alterar os dados
+		</h2>
+		<br>
+		
+		
+		<!-- Nome -->
+		<form method="post" action="/alterar" th:object="${aluno}" class="offset-md-3" style="background: white; border-radius: 15px; width: 550px;">
+		<input type="hidden" th:field="*{id}"> <!--Pegando o id, não necessita mostrar-->
+		<br>
+		
+			<!-- Nome -->
+			<div class="row">
+				<div class="col-md-6 form-group offset-md-3">
+					<label>Alterar Nome: </label>
+					<input class="form-control" th:field="*{nome}" placeholder="Nome Completo" required>
+				</div>
+			</div>
+			<br>
+			<!-- Curso -->
+			<div class="row">
+				<div class="col-md-6 form-group offset-md-3">
+					<label>Alterar o curso: </label>
+					<select class="form-control" th:field="*{curso}">
+						<!--
+						Fazendo iteração dos enums na variavel curso pegando seu valor e por fim
+						exibindo-o como texto
+						-->
+						<option th:each="curso : ${T(br.com.Student_Academy.Enums.Curso).values()}"
+						th:value="${curso}" th:text="${curso}"></option>
+					</select>
+				</div>
+			</div>
+			<br>
+			<!-- Matricula: com o readonly adicionado mantenho matricula a mesma -->
+			<div class="row">
+				<div class="col-md-6 form-group offset-md-3">
+					<label>Matricula: </label>
+					<input readonly="readonly" id="matricula" class="form-control" th:field="*{matricula}" placeholder="Anote sua Matricula">
+				</div>
+			</div>
+			<br>
+			<!-- Status -->
+			<div class="row">
+				<div class="col-md-6 form-group offset-md-3">
+					<label>Alterar status: </label>
+					<select class="form-control" th:field="*{status}">
+						<option th:each="status : ${T(br.com.Student_Academy.Enums.Status).values()}"
+						th:value="${status}" th:text="${status}"></option>
+					</select>
+				</div>
+			</div>
+			<br>
+			<!-- Turno -->
+			<div class="row">
+				<div class="col-md-6 form-group offset-md-3">
+					<label>Alterar Turno: </label>
+					<select class="form-control" th:field="*{turno}">
+						<option th:each="turno : ${T(br.com.Student_Academy.Enums.Turno).values()}"
+						th:value="${turno}" th:text="${turno}"></option>
+					</select>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<button type="submit" class="btn btn-success offset-md-4" style="width: 90px;">Salvar</button>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="btn btn-outline-danger" style="width: 90px;">Voltar</a>
+			</div>
+			<br>
+			
+		</form>
+		<br><br>		
+	</div>
+
+	<script src="js/main.js"></script>
+	<script src="/webjars/jquery/3.6.3/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--Aqui também inserimos o namespace da biblioteca thymeleaf para acessar suas tags especiais, usando th-->
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+	<title>Student Academy - login</title>
+	<meta name="author" content="R1TKILL">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<script src="https://kit.fontawesome.com/006642858d.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,600&family=Ubuntu&family=Work+Sans&display=swap" rel="stylesheet">
+	
+	<!--Carregando  biblioteca do google login-->
+	<script src="https://accounts.google.com/gsi/client" async></script>
+	<!--Carregando  biblioteca do JWT decode, para descriptografar o que vier do google-->
+	<script src="https://unpkg.com/jwt-decode/build/jwt-decode.js" async></script>
+	
+	 <script>
+		//Função do que o google vai responder para a aplicação.
+        function handleCredentialResponse(response) {
+          //Decodificando e guardando em data.
+          const data = jwt_decode(response.credential)
+          
+          /*Aqui vou mandar para o java pegando os dados passando pelo thymeleaf com hidden.*/
+          email.value = data.email
+          fullname.value = data.name
+          sub.value = data.sub
+          
+          document.getElementById('form-google').submit()
+        }
+
+        //Inicia as configurações do google login, insira o ClientID.
+        window.onload = function () {
+          google.accounts.id.initialize({
+            client_id: "571309837316-7rsltuec0v7rdatak2r4ljpthj9us53h.apps.googleusercontent.com",
+            callback: handleCredentialResponse // Quem vai receber as configuraçãoes.
+          });
+
+          //Redeniza o botão na tela.
+          google.accounts.id.renderButton(
+            document.getElementById("buttonDivGoogle"),
+            { theme: "filled_black", size: "large"}  // customization attributes
+          );
+
+          //Forma de login, a outra só é possivel se tiver SSL.
+          google.accounts.id.prompt(); // also display the One Tap dialog
+        }
+    </script>
+	
+</head>
+<body>
+
+	<div class="Login-Form">
+		<div class="container">
+			<div class="main-div">
+			
+				<div class="texto-header">
+					<h2>Admin Login</h2>
+					<p>Insira suas credenciais para efetuar login no sistema</p>
+				</div>
+				
+				<form method="post" th:object="${usuario}" action="/login">
+				
+					<div class="alert alert-danger" role="alert" th:if="${msg}">
+						<strong th:text="${msg}"></strong>
+					</div>
+				
+					<div class="form-group">
+						<i class="fa fa-user"></i>
+						<input type="text" th:field="*{user}" class="form-control" placeholder="username">
+					</div>
+					
+					<div class="form-group">
+						<i class="fa fa-lock"></i>
+						<input type="password" th:field="*{senha}" class="form-control" placeholder="password">
+					</div>
+					<br>
+					
+					<div class="cadastro">
+						<a th:href="@{cadastro}">Não tem cadastro? clique aqui.</a>
+					</div>
+					
+					<button type="submit" class="btn btn-primary">Login</button>
+					
+				</form>	
+				<!--Botão login com google-->
+				<br><br>		
+				<div id="buttonDivGoogle"></div>
+				<div id="google-dates" style=" display: none;">
+					<form id="form-google" method="post" th:object="${usuario}" action="loginGoogle">
+						<input id="email" th:field="*{email}"></input>
+						<input id="fullname" th:field="*{user}"></input>
+						<input id="sub" th:field="*{senha}"></input>
+					</form>
+				</div> 
+			</div>
+		</div>
+	</div>
+
+	<script src="/webjars/jquery/3.6.3/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

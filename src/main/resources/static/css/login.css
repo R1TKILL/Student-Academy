@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+.Login-Form{
+	min-height: 655px;
+	background-image: url('/img/backgroundLogin2.jpg');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	text-align: center;
+}
+
+.main-div{
+	background-color: #fff;
+	border-radius: 5px;
+	margin: 0 auto;
+	max-width: 50%;
+	padding: 50px 70px;
+}
+
+.form-control{
+	background: #f7f7f7;
+	border-radius: 7px;
+	font-size: 15px;
+	height: 50px;
+	line-height: 50px;
+	border: 2px solid #d4d4d4;
+}
+
+.form-group{
+	margin: 10px;
+}
+
+.btn.btn-primary{
+	background-color: #4527A0;
+	border-color: #d4d4d4;
+	font-size: 1.1em;
+	padding: 0;
+	height: 50px;
+	width: 90%;
+}
+
+.btn-cadastro{
+	background-color: #4527A0;
+	border-color: #d4d4d4;
+	font-size: 1.1em;
+	padding: 0;
+	height: 50px;
+	width: 90%;
+	margin-top: 10px;
+}
+
+.btn.btn-info{
+	background-color: #ac5bc3;
+	border-color: #d4d4d4;
+	color: #fff;
+	font-size: 1.1em;
+	padding: 5px;
+	width: 50%;
+	margin-top: 10px;
+}
+
+#buttonDivGoogle{
+	margin-left: 20%;
+}
+
+

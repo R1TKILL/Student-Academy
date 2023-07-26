@@ -1,0 +1,36 @@
+spring:
+
+  jpa:
+    hibernate:
+      ddl_auto: update
+      
+  mail:
+    host: smtp.gmail.com
+    username: antoniojunio402@gmail.com
+    properties:
+      mail:
+        smtp:
+          starttls:
+            required: 'true'
+            enable: 'true'
+          auth: 'true'
+    test-connection: 'false'
+    port: '587'
+    password: ognzkzrnktrqlvxb
+    
+  thymeleaf:
+    cache: 'False'
+    mode: HTML
+    
+  datasource:
+    password: Admin1str@tor
+    username: root
+    url: jdbc:mysql://localhost/academy
+    
+server:
+  error:
+    whitelabel:
+      enabled: 'false'
+      
+support:
+  mail: antoniojunio402@gmail.com

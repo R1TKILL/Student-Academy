@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--Aqui também inserimos o namespace da biblioteca thymeleaf para acessar suas tags especiais, usando th-->
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+ 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+ 	
+	<title>Student Academy - Home</title>
+	<meta name="author" content="R1TKILL">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://kit.fontawesome.com/006642858d.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,600&family=Ubuntu&family=Work+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+
+	<!--Em header e footer, estou aplicando o thymeleaf no meu html, usando uma "função" para armazenar,
+	um fragmento que posso reaproveitar em outra parte de um código, para usar este fragmento, usarei a
+	função replace na pasta home/index.htm, como exemplo.-->
+
+
+	<!--Cabeçalho-->
+	<!--Muitas dessas classes estão com bootsrap-->
+	<header th:fragment="baseup">
+				<nav class="navbar navbar-expand-lg navbar-dark">
+			<!--Mandando para o java, na rota raiz -->
+			<a class="navbar-brand" th:href="@{index}">
+ 				<img src="/img/logo_Oficial2.png" width="150px"/>
+			</a>
+		
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMobile" aria-controls="navMobile" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<div id="navMobile" class="navbar-collapse collapse justify-content-end">
+				<a class="btn-nav nav-item nav-link" th:href="@{index}"><i class="fas fa-home"></i> Home</a>
+				<a class="btn-nav nav-item nav-link" th:href="@{inserirAlunos}"><i class="fas fa-user-graduate"></i> Cadastrar Aluno</a>
+				<a class="btn-nav nav-item nav-link" th:href="@{filtroAlunos}"><i class="fas fa-search"></i> Pesquisar Aluno</a>
+				<form method="post" action="/logout">
+					<button type="submit" class="btn-nav nav-item nav-link btn btn-danger dan"><i class="fa fa-sign-out"></i> Sair</button>
+				</form>
+			</div>
+		</nav>
+	</header>
+	
+	<!--Rodapé-->
+	<footer th:fragment="basedown">
+		<div class="down-footer">
+			<span>Todos os Direitos Reservados - 2023 &copy; R1TKILL</span>
+		</div>
+	</footer>
+
+	<script src="/webjars/jquery/3.6.3/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html> 

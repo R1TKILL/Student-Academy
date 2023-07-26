@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+	<title>Pesquisar Alunos</title>
+	<meta name="author" content="R1TKILL">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://kit.fontawesome.com/006642858d.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,600&family=Ubuntu&family=Work+Sans&display=swap" rel="stylesheet">
+</head>
+<body style="background-image: url('img/backgroundPlanets9.png');">	
+
+	<div th:replace="Fragments/fragments :: baseup"></div>
+	
+	<div class="container" style="margin-top: 30px;">		
+		<h2 style="color: white; font-family: Ubuntu; font-weight: bold; text-align: center;">
+		Pesquisar por Alunos</h2>
+		<hr style="color: white; border: 3px solid #fffafa;">
+		<br>
+		
+		<!--Pesquisa Generica-->			
+			<form method="post" action="pesquisar-aluno" th:object="${aluno}">
+				<div class="input-group offset-3" style="width: 500px;">
+					<input type="text" th:field="*{nome}" class="form-control bar-search" placeholder="Busque por o nome de um Aluno...">
+					<div class="input-group-append" style="margin-left: 10px;">
+						<button type="submit" class="btn btn-outline-primary btn-search">
+						<i class="fas fa-search"></i></button>
+					</div>
+				</div>
+			</form>		
+		<br>
+		<br>
+		
+		
+		<!--Pesquisa Padronizada-->
+		<div class="row">	
+			<!--Card dos Alunos Ativos-->
+			<div class="card card-container" style="width: 268px;">	
+				<div class="img-container">	
+					<img class="card-img-top img-zoom" src="img/backgroundPlanets3.png"/>
+				</div>				
+				<div class="card-body">
+					<h5 class="card-title">Alunos Ativos</h5>
+					<p class="card-text">Busque por todos os alunos ativos no Sistema.</p>
+					<a th:href="@{/alunos-ativos}" class="btn btn-outline-primary">Clique Aqui!</a>
+				</div>
+			</div>
+			
+			<!--Card dos Alunos Inativos-->
+			<div class="card card-container" style="width: 268px; margin-left: 20px;">
+				<div class="img-container">		
+					<img class="card-img-top img-zoom" src="img/backgroundPlanets4.png"/>
+				</div>				
+				<div class="card-body">
+					<h5 class="card-title">Alunos Inativos</h5>
+					<p class="card-text">Busque por todos os alunos inativos no Sistema.</p>
+					<a th:href="@{/alunos-inativos}" class="btn btn-outline-primary">Clique Aqui!</a>
+				</div>
+			</div>
+			
+			<!--Card dos Alunos Trancados -->
+			<div class="card card-container" style="width: 268px; margin-left: 20px;">
+				<div class="img-container">		
+					<img class="card-img-top img-zoom" src="img/backgroundPlanets11.jpg"/>
+				</div>				
+				<div class="card-body">
+					<h5 class="card-title">Alunos Trancados</h5>
+					<p class="card-text">Busque por todos os alunos trancados no Sistema.</p>
+					<a th:href="@{/alunos-trancados}" class="btn btn-outline-primary">Clique Aqui!</a>
+				</div>
+			</div>
+			
+			<!--Card dos Alunos Cancelados -->
+			<div class="card card-container" style="width: 268px; margin-left: 20px;">
+				<div class="img-container">		
+					<img class="card-img-top img-zoom" src="img/backgroundPlanets12.jpg"/>	
+				</div>			
+				<div class="card-body">
+					<h5 class="card-title">Alunos Cancelados</h5>
+					<p class="card-text">Busque por todos os alunos cancelados no Sistema.</p>
+					<a th:href="@{/alunos-cancelados}" class="btn btn-outline-primary">Clique Aqui!</a>
+				</div>
+			</div>			
+		</div>
+		
+	</div>
+	
+	<script src="/webjars/jquery/3.6.3/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

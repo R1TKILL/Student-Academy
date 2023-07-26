@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+*{margin:0; padding:0; box-sizing:border-box;}
+
+body{background-image:url('/img/backgroundPlanets13.jpg'); background-size:cover;}
+
+.pacman{position:relative; left:-25px;}
+
+.conteudo-erro{position:relative; color:yellow; left:-450px;width:1250px;}
+
+.lb-game{position:relative; color:yellow; width:700px; left:-200px;}

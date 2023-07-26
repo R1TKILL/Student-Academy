@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+	<title>Inserir Alunos</title>
+	<meta name="author" content="R1TKILL">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://kit.fontawesome.com/006642858d.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,600&family=Ubuntu&family=Work+Sans&display=swap" rel="stylesheet">
+</head>
+<body style="background-image: url('img/backgroundPlanets.jpg');">	
+
+	<div th:replace="Fragments/fragments :: baseup"></div>
+	
+	<div class="container" style="margin-top: 30px;">		
+		<h2 style="text-align: center; font-weight: bold; color: white; font-family: Ubuntu">
+		Cadastre-se e aproveite o melhor de nossos cursos
+		</h2>
+		<br>
+		
+		<!--Enviando para InsertAlunos pelo objeto aluno e seu atributo coluna.-->
+		
+		<!-- Nome -->
+		<form method="post" action="/InsertAluno" th:object="${aluno}" class="offset-md-3" style="background: white; border-radius: 15px; width: 550px;">
+		<br>
+		
+			<!-- Nome -->
+			<div class="row">
+				<div class="col-md-6 form-group offset-md-3">
+					<!--Verificando se há errors e se hover trazer a mensagem configurada no campo nome-->
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nome')}">
+						<label class="validation-message" th:errors="*{nome}"></label>
+					</div>
+					<label> * Nome do Aluno: </label>
+					<input class="form-control" th:field="*{nome}" placeholder="Nome Completo">
+				</div>
+			</div>
+			<br>
+			<!-- Curso -->
+			<div class="row">
+				<div class="col-md-6 form-group offset-md-3">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('curso')}">
+						<label class="validation-message" th:errors="*{curso}"></label>
+					</div>
+					<label> * Selecione o curso: </label>
+					<select class="form-control" th:field="*{curso}">
+						<!--
+						Fazendo iteração dos enums na variavel curso pegando seu valor e por fim
+						exibindo-o como texto
+						-->
+						<option th:each="curso : ${T(br.com.Student_Academy.Enums.Curso).values()}"
+						th:value="${curso}" th:text="${curso}"></option>
+					</select>
+				</div>
+			</div>
+			<br>
+			<!-- Matricula -->
+			<div class="row">
+				<div class="col-md-6 form-group offset-md-3">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('matricula')}">
+						<label class="validation-message" th:errors="*{matricula}"></label>
+					</div>
+					<label> * Gerar Matricula: </label>
+					<input id="matricula" class="form-control" th:field="*{matricula}" placeholder="Anote sua Matricula">
+					<button type="button" onclick="GerarMatricula()" class="btn btn-dark" style="margin-top: 10px;">Gerar</button>
+				</div>
+			</div>
+			<br>
+			<!-- Status -->
+			<div class="row">
+				<div class="col-md-6 form-group offset-md-3">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('status')}">
+						<label class="validation-message" th:errors="*{status}"></label>
+					</div>
+					<label> * Selecione o status: </label>
+					<select class="form-control" th:field="*{status}">
+						<option th:each="status : ${T(br.com.Student_Academy.Enums.Status).values()}"
+						th:value="${status}" th:text="${status}"></option>
+					</select>
+				</div>
+			</div>
+			<br>
+			<!-- Turno -->
+			<div class="row">
+				<div class="col-md-6 form-group offset-md-3">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('turno')}">
+						<label class="validation-message" th:errors="*{turno}"></label>
+					</div>
+					<label>Selecione o Turno: </label>
+					<select class="form-control" th:field="*{turno}">
+						<option th:each="turno : ${T(br.com.Student_Academy.Enums.Turno).values()}"
+						th:value="${turno}" th:text="${turno}"></option>
+					</select>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<button type="submit" class="btn btn-success offset-md-4" style="width: 90px;">Salvar</button>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="btn btn-outline-danger" th:href="@{index}" style="width: 90px;">Voltar</a>
+			</div>
+			<br>
+			
+		</form>
+		<br><br>		
+	</div>
+
+	<script src="js/main.js"></script>
+	<script src="/webjars/jquery/3.6.3/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
